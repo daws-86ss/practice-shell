@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "enter your password"
-read -s PASSWORD # here password is variable
-echo "password entered is : $PASSWORD"
+echo "enter yoyr name"
+read -s NAME # name is variable here
+echo "name entered is : $NAME"
 
