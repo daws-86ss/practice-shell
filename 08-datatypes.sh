@@ -15,4 +15,4 @@ ACTORS=("prabhas" "nag" "paone" "star")
 
 echo "all the actors: ${ACTORS[@]}"
 echo "first actor: ${ACTORS[0]}"
-
+echo "last leader: ${ACTORS[3]}"
