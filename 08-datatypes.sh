@@ -14,5 +14,5 @@ echo "sum is: ${SUM}"
 ACTORS=("prabhas" "nag" "paone" "star")
 
 echo "all the actors: ${ACTORS[@]}"
-
+echo "first actor: ${ACTORS[0]}"
 
