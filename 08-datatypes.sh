@@ -8,3 +8,13 @@ NUMBER4=1322
 SUM=$(($NUMBER1+$NUMBER2+$NUMBER3+$NUMBER4))
 
 echo "sum is: ${SUM}"
+
+
+
+NAME1=modi
+NAME2=trump
+NAME3=balu
+
+SUM=$(($NMAE1+$NAME2+$NAME3))
+
+echo "sum is: ${SUM}"
