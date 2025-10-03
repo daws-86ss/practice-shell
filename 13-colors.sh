@@ -5,13 +5,19 @@
 
 USERID=$(id -u)
 
+
+R=\e[31m
+G=\e[32m
+Y=\e[33m
+N=\e[0m
+
 if [ $USERID -ne 0 ]; then
     echo "ERROR:run the script with root previliges"
     exit 1
 fi
 
 
-dnf install nginx -y
+
 VALIDATE(){
     if [ $1 -ne 0 ]; then
         echo "installing $2 is failure"
