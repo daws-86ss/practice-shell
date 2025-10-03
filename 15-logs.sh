@@ -18,7 +18,7 @@ LOG_FILE="$LOGS_FOLDER/$FILE_NAME.log"
 
 mkdir -p $LOGS_FOLDER
 
-echo "script started execututed at :$(date)"
+echo "script started execututed at :$(date)" | tee -a $LOG_FILE
 
 if [ $USERID -ne 0 ]; then
     echo "ERROR:run the script with root previliges"
@@ -27,10 +27,10 @@ fi
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
-        echo -e "installing $2 is.... $R failure $N"
+        echo -e "installing $2 is.... $R failure $N" | tee -a $LOG_FILE
         exit 1
     else
-        echo -e "installing $2 is.... $G success $N"
+        echo -e "installing $2 is.... $G success $N" | tee -a $LOG_FILE
     fi
 }
 
@@ -40,7 +40,7 @@ if [ $? -ne 0 ]; then
     dnf install nginx -y &>>$LOG_FILE
     VALIDATE $? "NGINX"
 else
-    echo -e "nginx is already insatlled ...  $Y skipping $N"
+    echo -e "nginx is already insatlled ...  $Y skipping $N" | tee -a $LOG_FILE
 fi
 
 dnf list installed mysql &>>$LOG_FILE
@@ -48,12 +48,12 @@ if [ $? -ne 0 ]; then
     dnf install mysql -y &>>$LOG_FILE
     VALIDATE $? "MYSQL"
 else
-    echo -e "mysql is already insatlled ...  $Y skipping $N"
+    echo -e "mysql is already insatlled ...  $Y skipping $N" | tee -a $LOG_FILE
 fi
 dnf list installed python3 &>>$LOG_FILE
 if [ $? -ne 0 ]; then
     dnf install python3 -y &>>$LOG_FILE
     VALIDATE $? "PYTHON3"
 else
-    echo -e "python3 is already insatlled ...  $Y skipping $N"
+    echo -e "python3 is already insatlled ...  $Y skipping $N" | tee -a $LOG_FILE
 fi
