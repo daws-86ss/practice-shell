@@ -36,12 +36,13 @@ VALIDATE(){
 
 for package in $@
 do
-# check if package is installed or not
-dnf installed $package &>>LOG_FILE
-# if package is installed exit code is 0, otherwise need to install the pacakge.
-if [ $? -ne 0 ]; then
-    dnf insatll $package -y &>>LOG_FILE
-    VALIDATE $? "$package"
-else 
-    echo -e "$package is installed already..$Y skipping $N"
+    #check whether pacakage is installed or not 
+    dnf list installed $package &>>LOG_FILE
+    # checking exit status
+    if [ $? -ne 0 ]; then
+        dnf install $package -y &>>LOG_FILE
+        VALIDATE $? "$pacakge"
+    else 
+        echo -e "$package installed already $Y..skipping $N"
+    fi 
 done
